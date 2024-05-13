@@ -39,15 +39,15 @@ public class TestCases extends BaseTest {
 
     public void Register_with_old_user () {
 
-        RegisterPage registerp = new RegisterPage(driver);
-        registerp.clickregister();
-        registerp.enterfstname("softhard");
-        registerp.enterlastname("test");
-        registerp.enteremail("testni@gmail.com");
-        registerp.enterpassword("567891");
-        registerp.reenterpassword("567891");
-        registerp.submitregister();
-        Assert.assertEquals(registerp.INCORRECTregistermess(), "The specified email already exists");
+        RegisterPage regpage = new RegisterPage(driver);
+        regpage.clickregister();
+        regpage.enterfstname("softhard");
+        regpage.enterlastname("test");
+        regpage.enteremail("testni@gmail.com");
+        regpage.enterpassword("567891");
+        regpage.reenterpassword("567891");
+        regpage.submitregister();
+        Assert.assertEquals(regpage.INCORRECTregistermess(), "The specified email already exists");
     }
     @DataProvider(name = "loginData")
     public Object[][] providelogindata(){
@@ -60,12 +60,12 @@ public class TestCases extends BaseTest {
     @Test(dataProvider = "loginData")
     public void Login_Incorrect_User(String username,String password){
 
-        LoginPage log = new LoginPage(driver);
-        log.loginbuttonkey();
-        log.enterEmailINEmailBox(username);
-        log.enterPasswordInPasswordBox(password);
-        log.loginButtonsubmitkey();
-        Assert.assertEquals(log.loginincorrectmess(),"Login was unsuccessful. Please correct the errors and try again.\n" +
+        LoginPage login = new LoginPage(driver);
+        login.loginbuttonkey();
+        login.enterEmailINEmailBox(username);
+        login.enterPasswordInPasswordBox(password);
+        login.loginButtonsubmitkey();
+        Assert.assertEquals(login.loginincorrectmess(),"Login was unsuccessful. Please correct the errors and try again.\n" +
                 "No customer account found");
     }
 }
